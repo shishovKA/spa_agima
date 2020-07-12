@@ -11,6 +11,7 @@ const timeTable = new Timetable(timeTableContainer, storage);
 const weekTable = new Weektable(weekTableContainer, dayNames, timeTable);
 
 const addBtn = document.querySelector('.inputblock__add');
+const inputZone = document.querySelector('.inputblock');
 
 const starBtn = document.querySelector('.starbutton');
 
@@ -56,16 +57,14 @@ function addNewTask() {
 }
 
 
-function targetActive(event){
-  
-  console.log('dsjfkjdf');
+function keyHandler(event) {
+  if (event.keyCode == 13) addNewTask();
 }
 
 //РАЗДЕЛ: Слушатели событий
 
 addBtn.addEventListener('click', addNewTask);
-
-starBtn.addEventListener('dragstart', targetActive);
+inputZone.addEventListener('keydown', keyHandler);
 
 //РАЗДЕЛ: Вызов функций и методов
 
