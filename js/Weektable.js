@@ -9,6 +9,7 @@ class Weektable {
         this._createDay = this._createDay.bind(this);
         this._setEventListeners = this._setEventListeners.bind(this);
         this._dayClick = this._dayClick.bind(this);
+        //this._drop = this._drop.bind(this);
 
         this._renderDayList();
         this._setEventListeners();
@@ -43,15 +44,49 @@ class Weektable {
     _dayClick(index) {
         this.timeTable.showDayTimeTable(this.dayNames[index].name);
         this.currentDay.classList.remove('dayblock_now');
+        
         this.currentDay = event.target; 
         this.currentDay.classList.add('dayblock_now'); 
     }
+
+    _dropOver() {
+        this.classList.add('dayblock_over');
+        event.preventDefault();
+    }
+
+    _dropLeave() {
+        this.classList.remove('dayblock_over');
+    }
+
+    _drop(index) {
+        this.timeTable.changeDayTasks(this.dayNames[index].name);
+        this.timeTable.showDayTimeTable(this.dayNames[index].name);
+        this.currentDay.classList.remove('dayblock_now');
+        this.currentDay = event.target; 
+        this.currentDay.classList.add('dayblock_now');
+        this.currentDay.classList.remove('dayblock_over');
+        console.log('drop'); 
+        event.preventDefault();
+    }
+
 
     _setEventListeners() {
         console.log(this.dayList);
 
         this.dayList.forEach((btn,index) => {
             btn.addEventListener("click", () => {this._dayClick(index)});
+        });
+
+        this.dayList.forEach((btn) => {
+            btn.addEventListener("dragover", this._dropOver);
+        });
+
+        this.dayList.forEach((btn) => {
+            btn.addEventListener("dragleave", this._dropLeave);
+        });
+
+        this.dayList.forEach((btn,index) => {
+            btn.addEventListener("drop", () => {this._drop(index)});
         });
 
       }

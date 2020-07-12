@@ -18,8 +18,3 @@
     transition-property: opacity;
     transition-duration: 1s;
 }
-
-
-.inputblock_disappear {
-    opacity: 0;
-}

@@ -12,6 +12,8 @@ const weekTable = new Weektable(weekTableContainer, dayNames, timeTable);
 
 const addBtn = document.querySelector('.inputblock__add');
 
+const starBtn = document.querySelector('.starbutton');
+
 
 //попапы
 //const popupNewPlace = new PopupNewPlace(document.querySelector('.root'));
@@ -33,7 +35,7 @@ function addNewTask() {
     let row = event.target.parentElement;
 
 
-    row.animate(
+    const replaceTop = row.animate(
         [
           { top: '0px', opacity: 1 },
           {  opacity: 0.2 },
@@ -43,19 +45,27 @@ function addNewTask() {
         }
       );
 
-    const fields = row.querySelectorAll('.field');
-    const newTask = {time: fields[0].textContent,
-                    task: fields[1].textContent}
-    timeTable.insertTask(newTask);
-    
-    clearInput()
+    replaceTop.onfinish = function() {
+      const fields = row.querySelectorAll('.field');
+      const newTask = {time: fields[0].textContent,
+                      task: fields[1].textContent}
+      timeTable.insertTask(newTask);
+      clearInput()
+      };
 
 }
 
 
+function targetActive(event){
+  
+  console.log('dsjfkjdf');
+}
+
 //РАЗДЕЛ: Слушатели событий
 
 addBtn.addEventListener('click', addNewTask);
+
+starBtn.addEventListener('dragstart', targetActive);
 
 //РАЗДЕЛ: Вызов функций и методов
 

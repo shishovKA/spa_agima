@@ -9,6 +9,12 @@ class Timetable {
         this._inputChange = this._inputChange.bind(this);
         this._deleteTask = this._deleteTask.bind(this); 
         this._isPast = this._isPast.bind(this); 
+        this.changeDayTasks = this.changeDayTasks.bind(this); 
+    }
+
+    changeDayTasks(day2) {
+        const dayData1 = this.storage.getDayData(this.day);
+        this.storage.setDayData(day2, dayData1);
     }
 
     showDayTimeTable(day) {

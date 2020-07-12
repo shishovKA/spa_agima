@@ -19,3 +19,7 @@
 .dayblock_now {
     border: solid 3px red;
 }
+
+.dayblock_over {
+    border: solid 3px green;
+}
