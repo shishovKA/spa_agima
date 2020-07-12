@@ -39,7 +39,7 @@ class Storage {
     }
 
     setDayData(day, data) {
-        this.data[day] = data;
+        this.data[day] = data.slice(0,);
         this._updateStorage();
     }
 
