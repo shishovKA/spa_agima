@@ -2,7 +2,7 @@ class Storage {
 
     constructor (localStorage,startData) {
         this.storage = localStorage;
-        this.length = this.storage.length;
+        this.varName = 'data_spa';
         this._firstload = this._firstload.bind(this);
         this._updateStorage = this._updateStorage.bind(this);
         this._getStorageData = this._getStorageData.bind(this);
@@ -14,7 +14,7 @@ class Storage {
     }
 
     _firstload(startData) {
-        if (this.length !== 0) {
+        if (this.storage.getItem(this.varName) !== null) {
             this._getStorageData();
         }
 
@@ -26,11 +26,11 @@ class Storage {
 
     _updateStorage() {
         this.storage.clear();
-        this.storage.data = JSON.stringify(this.data);
+        this.storage[this.varName] = JSON.stringify(this.data);
     }
 
     _getStorageData() {
-        this.data = JSON.parse(this.storage.data);
+        this.data = JSON.parse(this.storage[this.varName]);
     }
 
     getDayData(day) {
