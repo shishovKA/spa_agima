@@ -1,0 +1,5 @@
+@import url(./__container/starbutton__container.css);
+
+.starbutton {
+    background-image: url(https://image.flaticon.com/icons/svg/3004/3004112.svg);
+}

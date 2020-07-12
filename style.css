@@ -1,0 +1,19 @@
+@import url(./vendor/normalize.css);
+@import url(./blocks/window/window.css);
+@import url(./blocks/dayblock/dayblock.css);
+@import url(./blocks/field/field.css);
+
+@import url(./blocks/button/button.css);
+@import url(./blocks/inputblock/inputblock.css);
+@import url(./blocks/starbutton/starbutton.css);
+
+@import url(./blocks/timetable/timetable.css);
+
+body {
+  margin-top: 150px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #FFFFFF;
+}
